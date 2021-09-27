@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
-import 'package:mapas_tlati/controllers/home_controller.dart';
+import 'package:mapas_tlati/src/controllers/home_controller.dart';
 
 class HomeView extends StatelessWidget {
    HomeView({Key? key}) : super(key: key);
@@ -50,7 +50,7 @@ class HomeView extends StatelessWidget {
          child: Row(
            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
            children: [
-             Image.asset('assets/img/logo_app.jpg',width: 180, height: 130),
+             Image.asset('assets/img/logo_app2.png',width: 200, height: 150),
              const Text('Tlati Digital', style: TextStyle(fontFamily: 'Pacifico', fontSize: 22, fontWeight: FontWeight.bold))
            ],
          ),

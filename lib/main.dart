@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mapas_tlati/views/home/home_view.dart';
-import 'package:mapas_tlati/views/login/login_view.dart';
+import 'package:mapas_tlati/src/views/home/home_view.dart';
+import 'package:mapas_tlati/src/views/login/login_view.dart';
+import 'package:mapas_tlati/src/utils/colors.dart' as utils;
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,11 @@ class _MyAppState extends State<MyApp> {
       title: 'Uber Clone',
       initialRoute: 'home',
       theme: ThemeData(
-        fontFamily: 'NimbusSans'
+        fontFamily: 'NimbusSans',
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          color: utils.Colors.primaryColor
+        ),
       ),
       routes: {
         'home':(BuildContext context) => HomeView(),
