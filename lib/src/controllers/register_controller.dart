@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mapas_tlati/src/models/cliente.dart';
 import 'package:mapas_tlati/src/providers/auth_provider.dart';
+import 'package:mapas_tlati/src/providers/client_provider.dart';
 
 class RegisterController {
   BuildContext? context;
@@ -10,10 +12,12 @@ class RegisterController {
   TextEditingController usernameController = TextEditingController();
 
   late AuthProvider _authProvider;
+  late ClientPovider _clientPovider;
 
   Future? init(BuildContext context) {
     this.context = context;
     _authProvider = AuthProvider();
+    _clientPovider = ClientPovider();
   }
 
   void register() async {
@@ -49,6 +53,13 @@ class RegisterController {
     try {
       bool isRegister = await _authProvider.register(email, password);
       if (isRegister) {
+        Client client = Client(
+            id: _authProvider.getUser()!.uid,
+            email: _authProvider.getUser()!.uid,
+            username: username,
+            password: password);
+
+        await _clientPovider.create(client);
         print('el usuario se reistro ');
       } else {
         print('no se pudo');
