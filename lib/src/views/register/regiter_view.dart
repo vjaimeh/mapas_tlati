@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:mapas_tlati/src/controllers/login_controller.dart';
+import 'package:mapas_tlati/src/controllers/register_controller.dart';
 import 'package:mapas_tlati/src/utils/colors.dart' as utils;
 import 'package:mapas_tlati/src/widgets/button_app.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+class RegisterView extends StatefulWidget {
+  const RegisterView({Key? key}) : super(key: key);
 
   @override
-  _LoginViewState createState() => _LoginViewState();
+  _RegisterViewState createState() => _RegisterViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
-  final LoginController _con = LoginController();
+class _RegisterViewState extends State<RegisterView> {
+  final RegisterController _con = RegisterController();
 
   @override
   void initState() {
@@ -32,38 +33,24 @@ class _LoginViewState extends State<LoginView> {
         child: Column(
           children: [
             _bannerApp(),
-            _textDescription(),
             _textLogin(),
-            SizedBox(height: MediaQuery.of(context).size.height * .12),
+            _textFieldUsername(),
             _textFieldEmail(),
             _textFieldPassword(),
-            _buttonLogin(),
-            _textDontHaveAccount()
+            _textFieldConfirmPassword(),
+            _buttoRegister()
           ],
         ),
       ),
     );
   }
 
-  Widget _textDontHaveAccount() {
-    return GestureDetector(
-      onTap: _con.goToRegisterView,
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 50),
-        child: const Text(
-          '¿No tienes cuenta?',
-          style: TextStyle(fontSize: 15, color: Colors.grey),
-        ),
-      ),
-    );
-  }
-
-  Widget _buttonLogin() {
+  Widget _buttoRegister() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
       child: ButtonApp(
         onPressed: _con.login,
-        text: 'Iniciar Sesión',
+        text: 'Registrar ahora',
         color: utils.Colors.primaryColor,
         icon: Icons.done,
       ),
@@ -102,14 +89,34 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  Widget _textDescription() {
+  Widget _textFieldConfirmPassword() {
     return Container(
-      alignment: Alignment.centerLeft,
-      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-      child: const Text(
-        'Continua con tu',
-        style: TextStyle(
-            color: Colors.black54, fontSize: 24, fontFamily: 'NimbusSans'),
+      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+      child: TextField(
+        obscureText: true,
+        controller: _con.confirmpasswordController,
+        decoration: const InputDecoration(
+            labelText: 'confirma Contraseña:',
+            prefixIcon: Icon(
+              Icons.lock_open_outlined,
+              color: utils.Colors.primaryColor,
+            )),
+      ),
+    );
+  }
+
+  Widget _textFieldUsername() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 30),
+      child: TextField(
+        controller: _con.usernameController,
+        decoration: const InputDecoration(
+            hintText: 'pepe perez',
+            labelText: 'nombre de usuario:',
+            prefixIcon: Icon(
+              Icons.person_outlined,
+              color: utils.Colors.primaryColor,
+            )),
       ),
     );
   }
@@ -117,11 +124,11 @@ class _LoginViewState extends State<LoginView> {
   Widget _textLogin() {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: const EdgeInsets.symmetric(horizontal: 30),
+      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
       child: const Text(
-        'Login',
+        'REGISTRO',
         style: TextStyle(
-            color: Colors.black, fontWeight: FontWeight.bold, fontSize: 28),
+            color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25),
       ),
     );
   }

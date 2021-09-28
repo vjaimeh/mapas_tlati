@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mapas_tlati/src/providers/auth_provider.dart';
 
-class LoginController {
+class RegisterController {
   BuildContext? context;
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmpasswordController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
 
   late AuthProvider _authProvider;
 
@@ -14,11 +16,7 @@ class LoginController {
     _authProvider = AuthProvider();
   }
 
-  void goToRegisterView() {
-    Navigator.pushNamed(context!, 'register');
-  }
-
-  void login() async {
+  void register() async {
     String email = emailController.text;
     String password = passwordController.text;
 
