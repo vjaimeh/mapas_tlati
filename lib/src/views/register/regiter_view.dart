@@ -49,7 +49,7 @@ class _RegisterViewState extends State<RegisterView> {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
       child: ButtonApp(
-        onPressed: _con.login,
+        onPressed: _con.register,
         text: 'Registrar ahora',
         color: utils.Colors.primaryColor,
         icon: Icons.done,
