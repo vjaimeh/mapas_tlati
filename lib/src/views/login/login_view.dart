@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:mapas_tlati/src/controllers/login_controller.dart';
 import 'package:mapas_tlati/src/utils/colors.dart' as utils;
+import 'package:mapas_tlati/src/widgets/button_app.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -10,21 +13,34 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+
+  final LoginController _con = LoginController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    SchedulerBinding.instance?.addPostFrameCallback((timeStamp) {
+      _con.init(context);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-          _bannerApp(),
-          _textDescription(),
-          _textLogin(),
-          Expanded(child: Container(),),
-          _textFieldEmail(),
-          _textFieldPassword(),
-          _buttonLogin(),
-          _textDontHaveAccount()
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            _bannerApp(),
+            _textDescription(),
+            _textLogin(),
+            SizedBox(height: MediaQuery.of(context).size.height*.12),
+            _textFieldEmail(),
+            _textFieldPassword(),
+            _buttonLogin(),
+            _textDontHaveAccount()
+          ],
+        ),
       ),
     );
   }
@@ -47,16 +63,13 @@ class _LoginViewState extends State<LoginView> {
 
   Widget _buttonLogin() {
     return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
-      child: ElevatedButton.icon(
-        label: const Text('Iniciar sesión'),
-        icon: const Icon(Icons.done),
-        style: ElevatedButton.styleFrom(
-          primary: utils.Colors.primaryColor,
+        margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+        child: ButtonApp(
+          onPressed: _con.login,
+          text: 'Iniciar Sesión',
+            color: utils.Colors.primaryColor,
+          icon: Icons.done,
         ),
-        onPressed: (){},
-      ),
     );
   }
 
@@ -64,7 +77,7 @@ class _LoginViewState extends State<LoginView> {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 30),
       child: TextField(
-        /*controller: _con.emailController,*/
+        controller: _con.emailController,
         decoration: const InputDecoration(
             hintText: 'correo@gmail.com',
             labelText: 'Correo electrónico:',
@@ -79,11 +92,11 @@ class _LoginViewState extends State<LoginView> {
 
   Widget _textFieldPassword() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
       child: TextField(
         obscureText: true,
-        /*controller: _con.passwordController,*/
-        decoration: InputDecoration(
+        controller: _con.passwordController,
+        decoration: const InputDecoration(
             labelText: 'Contraseña:',
             prefixIcon: Icon(
               Icons.lock_open_outlined,
