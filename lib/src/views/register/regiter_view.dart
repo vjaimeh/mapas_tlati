@@ -28,6 +28,7 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _con.key,
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Column(

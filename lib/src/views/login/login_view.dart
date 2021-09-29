@@ -27,6 +27,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _con.key,
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Column(

@@ -28,6 +28,5 @@ class Client {
         "id": id,
         "username:": username,
         "email": email,
-        "Password": password,
       };
 }
