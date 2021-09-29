@@ -4,11 +4,12 @@ import 'package:mapas_tlati/src/providers/auth_provider.dart';
 import 'package:mapas_tlati/src/providers/client_provider.dart';
 import 'package:mapas_tlati/src/utils/my_progress_dialog.dart';
 import 'package:mapas_tlati/src/utils/snackbar.dart' as utils;
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:progress_dialog/progress_dialog.dart';
 
 class RegisterController {
   BuildContext? context;
-  GlobalKey<ScaffoldState> key = new GlobalKey<ScaffoldState>();
+  GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mapas_tlati/src/providers/auth_provider.dart';
 import 'package:mapas_tlati/src/utils/my_progress_dialog.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:mapas_tlati/src/utils/snackbar.dart' as utils;
+// @dart=2.9
 
 class LoginController {
   BuildContext? context;

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
-import 'package:mapas_tlati/src/controllers/login_controller.dart';
 import 'package:mapas_tlati/src/controllers/register_controller.dart';
 import 'package:mapas_tlati/src/utils/colors.dart' as utils;
 import 'package:mapas_tlati/src/widgets/button_app.dart';
