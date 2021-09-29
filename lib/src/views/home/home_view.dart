@@ -27,11 +27,11 @@ class HomeView extends StatelessWidget {
               const SizedBox(height: 50),
               _textSelectYourRol(),
               const SizedBox(height: 30),
-              _imageTypeUser(context,'assets/img/pasajero.png'),
+              _imageTypeUser(context,'assets/img/pasajero.png', 'client'),
               const SizedBox(height: 10),
               _textTypeUser('Cliente'),
               const SizedBox(height: 30),
-              _imageTypeUser(context,'assets/img/driver.png'),
+              _imageTypeUser(context,'assets/img/driver.png', 'driver'),
               const SizedBox(height: 10),
               _textTypeUser('Conductor')
             ],
@@ -63,8 +63,15 @@ class HomeView extends StatelessWidget {
        'SELECCIONA TU ROL', style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: 'OneDay'));
    }
 
-  Widget _imageTypeUser(BuildContext context, String typeImage){
-    return GestureDetector(onTap: _con.goToLoginView, child: CircleAvatar(backgroundImage: AssetImage(typeImage),radius: 50,backgroundColor: const Color.fromRGBO(36, 25, 55, 1)));
+  Widget _imageTypeUser(BuildContext context, String typeImage, String typeUser){
+    return GestureDetector(
+        onTap: () => _con.goToLoginView(typeUser),
+        child: CircleAvatar(
+            backgroundImage: AssetImage(typeImage),
+            radius: 50,
+            backgroundColor: const Color.fromRGBO(36, 25, 55, 1)
+        ),
+    );
   }
 
   Widget _textTypeUser(String typeUser){

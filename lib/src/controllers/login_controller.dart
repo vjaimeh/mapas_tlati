@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mapas_tlati/src/providers/auth_provider.dart';
 import 'package:mapas_tlati/src/utils/my_progress_dialog.dart';
+import 'package:mapas_tlati/src/utils/shared_pref.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:mapas_tlati/src/utils/snackbar.dart' as utils;
@@ -8,19 +9,24 @@ import 'package:mapas_tlati/src/utils/snackbar.dart' as utils;
 
 class LoginController {
   BuildContext? context;
-  GlobalKey<ScaffoldState> key = new GlobalKey<ScaffoldState>();
+  GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   late AuthProvider _authProvider;
   late ProgressDialog _progressDialog;
+  late SharedPref _sharedPref;
+  late String _typeUser;
 
-  Future? init(BuildContext context) {
+  Future? init(BuildContext context) async{
     this.context = context;
     _authProvider = AuthProvider();
-    _progressDialog =
-        MyProgresDialog.createProgressDialog(context, 'Espere un momento..');
+    _progressDialog = MyProgresDialog.createProgressDialog(context, 'Espera un momento...');
+    _sharedPref = SharedPref();
+    _typeUser = await _sharedPref.read('typeUser');
+    print('********** TIPO DE USUARIO **********');
+    print(_typeUser);
   }
 
   void goToRegisterView() {
