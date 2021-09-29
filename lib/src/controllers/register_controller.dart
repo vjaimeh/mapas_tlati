@@ -25,7 +25,7 @@ class RegisterController {
     _authProvider = AuthProvider();
     _clientPovider = ClientPovider();
     _progressDialog =
-        MyProgresDialog.createProgressDialog(context, 'Espere un momento..');
+        MyProgresDialog.createProgressDialog(context, 'Espere un momento...');
   }
 
   void register() async {
@@ -43,24 +43,24 @@ class RegisterController {
         email.isEmpty &&
         password.isEmpty &&
         confirmpassword.isEmpty) {
-      print('debe tener todos los campos  ');
+      print('Debes ingresar todos los datos');
       utils.Snackbar.showSnackbar(
-          context!, key, 'debes ingresar todos los datos ');
+          context!, key, 'Debes ingresar todos los datos');
 
       return;
     }
     if (confirmpassword != password) {
-      print('incorrecto ');
+      print('Incorrecto');
       utils.Snackbar.showSnackbar(
-          context!, key, 'debes ser igual a la contraseña');
+          context!, key, 'Las contraseñas no coinciden');
 
       return;
     }
 
     if (password.length <= 6) {
-      print('debe ser mayor a 6 ');
+      print('Debe ser mayor a 6');
       utils.Snackbar.showSnackbar(
-          context!, key, 'debes ingresar una contraseña mayor a 6 ');
+          context!, key, 'La contraseña debe ser mayor a 6 caracteres');
 
       return;
     }
@@ -76,10 +76,10 @@ class RegisterController {
 
         await _clientPovider.create(client);
         _progressDialog.hide();
-        print('el usuario se reistro ');
+        print('El usuario se reistró');
       } else {
         _progressDialog.hide();
-        print('no se pudo');
+        print('El usuario NO se registró');
       }
     } catch (error) {
       _progressDialog.hide();
