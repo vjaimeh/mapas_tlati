@@ -51,9 +51,9 @@ class _RegisterViewState extends State<RegisterView> {
       margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
       child: ButtonApp(
         onPressed: _con.register,
-        text: 'Registrar ahora',
+        text: 'Registrarse',
         color: utils.Colors.primaryColor,
-        icon: Icons.done,
+        icon: Icons.person_add,
       ),
     );
   }
@@ -97,7 +97,7 @@ class _RegisterViewState extends State<RegisterView> {
         obscureText: true,
         controller: _con.confirmpasswordController,
         decoration: const InputDecoration(
-            labelText: 'confirma Contraseña:',
+            labelText: 'Confirmar contraseña:',
             prefixIcon: Icon(
               Icons.lock_open_outlined,
               color: utils.Colors.primaryColor,
@@ -112,8 +112,8 @@ class _RegisterViewState extends State<RegisterView> {
       child: TextField(
         controller: _con.usernameController,
         decoration: const InputDecoration(
-            hintText: 'pepe perez',
-            labelText: 'nombre de usuario:',
+            hintText: 'Usuario',
+            labelText: 'Nombre de usuario:',
             prefixIcon: Icon(
               Icons.person_outlined,
               color: utils.Colors.primaryColor,
