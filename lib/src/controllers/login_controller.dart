@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mapas_tlati/src/providers/auth_provider.dart';
 import 'package:mapas_tlati/src/utils/my_progress_dialog.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:mapas_tlati/src/utils/snackbar.dart' as utils;
-// @dart=2.9
 
 class LoginController {
   BuildContext? context;
@@ -39,11 +37,13 @@ class LoginController {
       bool isLogin = await _authProvider.login(email, password);
       _progressDialog.hide();
       if (isLogin) {
-        print('el usuario esta logeado ');
-        utils.Snackbar.showSnackbar(context!, key, 'el usuario esta logeado ');
+        print('El usuario ha iniciado sesión');
+        utils.Snackbar.showSnackbar(
+            context!, key, 'El usuario ha iniciado sesión');
       } else {
-        print('no se pudo');
-        utils.Snackbar.showSnackbar(context!, key, 'no se pudo ');
+        print('No se pudo iniciar la sesión');
+        utils.Snackbar.showSnackbar(
+            context!, key, 'No se pudo iniciar la sesión');
       }
     } catch (error) {
       utils.Snackbar.showSnackbar(context!, key, 'Error: $error');

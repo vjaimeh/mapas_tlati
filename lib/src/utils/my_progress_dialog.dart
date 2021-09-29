@@ -15,9 +15,9 @@ class MyProgresDialog {
         insetAnimCurve: Curves.easeInOut,
         progress: 0.0,
         maxProgress: 100.0,
-        progressTextStyle: TextStyle(
+        progressTextStyle: const TextStyle(
             color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
-        messageTextStyle: TextStyle(
+        messageTextStyle: const TextStyle(
             color: Colors.black, fontSize: 17.0, fontWeight: FontWeight.w600));
     return progressDialog;
   }
