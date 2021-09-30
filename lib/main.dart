@@ -1,10 +1,13 @@
 // @dart=2.9
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mapas_tlati/src/views/client/map/client_map_view.dart';
+import 'package:mapas_tlati/src/views/driver/map/driver_map_view.dart';
+import 'package:mapas_tlati/src/views/driver/register/driver_register_view.dart';
 import 'package:mapas_tlati/src/views/home/home_view.dart';
 import 'package:mapas_tlati/src/views/login/login_view.dart';
 import 'package:mapas_tlati/src/utils/colors.dart' as utils;
-import 'package:mapas_tlati/src/views/register/regiter_view.dart';
+import 'package:mapas_tlati/src/views/client/register/client_register_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +37,10 @@ class _MyAppState extends State<MyApp> {
       routes: {
         'home': (BuildContext context) => HomeView(),
         'login': (BuildContext context) => const LoginView(),
-        'register': (BuildContext context) => const RegisterView(),
+        'client/register': (BuildContext context) => const ClientRegisterView(),
+        'driver/register': (BuildContext context) => const DriverRegisterView(),
+        'driver/map': (BuildContext context) => const DriverMapView(),
+        'client/map': (BuildContext context) => const ClientMapView(),
       },
     );
   }

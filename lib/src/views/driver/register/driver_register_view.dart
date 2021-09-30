@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
-import 'package:mapas_tlati/src/controllers/register_controller.dart';
+import 'package:mapas_tlati/src/controllers/driver_register_controller.dart';
 import 'package:mapas_tlati/src/utils/colors.dart' as utils;
+import 'package:mapas_tlati/src/utils/otp_widget.dart';
 import 'package:mapas_tlati/src/widgets/button_app.dart';
 
-class RegisterView extends StatefulWidget {
-  const RegisterView({Key? key}) : super(key: key);
+class DriverRegisterView extends StatefulWidget {
+  const DriverRegisterView({Key? key}) : super(key: key);
 
   @override
-  _RegisterViewState createState() => _RegisterViewState();
+  _DriverRegisterViewState createState() => _DriverRegisterViewState();
 }
 
-class _RegisterViewState extends State<RegisterView> {
-  final RegisterController _con = RegisterController();
+class _DriverRegisterViewState extends State<DriverRegisterView> {
+  final DriverRegisterController _con = DriverRegisterController();
 
   @override
   void initState() {
@@ -34,6 +35,18 @@ class _RegisterViewState extends State<RegisterView> {
           children: [
             _bannerApp(),
             _textLogin(),
+            _textLicencePlate(),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 25),
+              child: OTPFields(
+                pin1: _con.pin1Controller,
+                pin2: _con.pin2Controller,
+                pin3: _con.pin3Controller,
+                pin4: _con.pin4Controller,
+                pin5: _con.pin5Controller,
+                pin6: _con.pin6Controller
+              ),
+            ),
             _textFieldUsername(),
             _textFieldEmail(),
             _textFieldPassword(),
@@ -101,6 +114,20 @@ class _RegisterViewState extends State<RegisterView> {
               Icons.lock_open_outlined,
               color: utils.Colors.primaryColor,
             )),
+      ),
+    );
+  }
+
+  Widget _textLicencePlate() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      margin: const EdgeInsets.symmetric(horizontal: 30),
+      child: Text(
+        'Placa del vehículo',
+        style: TextStyle(
+            color: Colors.grey[600],
+            fontSize: 17
+        ),
       ),
     );
   }

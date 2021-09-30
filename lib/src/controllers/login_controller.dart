@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mapas_tlati/src/providers/auth_provider.dart';
 import 'package:mapas_tlati/src/utils/my_progress_dialog.dart';
-<<<<<<< HEAD
 import 'package:mapas_tlati/src/utils/shared_pref.dart';
 // ignore: import_of_legacy_library_into_null_safe
-=======
->>>>>>> a04020b10a70b5536fbd4a79d1ac927fdf5fccde
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:mapas_tlati/src/utils/snackbar.dart' as utils;
 
@@ -32,7 +29,12 @@ class LoginController {
   }
 
   void goToRegisterView() {
-    Navigator.pushNamed(context!, 'register');
+    if (_typeUser == 'client') {
+      Navigator.pushNamed(context!, 'client/register');
+    }
+    else {
+      Navigator.pushNamed(context!, 'driver/register');
+    }
   }
 
   void login() async {
@@ -50,6 +52,7 @@ class LoginController {
         print('El usuario ha iniciado sesión');
         utils.Snackbar.showSnackbar(
             context!, key, 'El usuario ha iniciado sesión');
+        Navigator.pushNamedAndRemoveUntil(context!, 'client/map', (route)=>false);
       } else {
         print('No se pudo iniciar la sesión');
         utils.Snackbar.showSnackbar(

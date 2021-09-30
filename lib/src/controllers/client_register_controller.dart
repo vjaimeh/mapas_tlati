@@ -6,7 +6,7 @@ import 'package:mapas_tlati/src/utils/my_progress_dialog.dart';
 import 'package:mapas_tlati/src/utils/snackbar.dart' as utils;
 import 'package:progress_dialog/progress_dialog.dart';
 
-class RegisterController {
+class ClientRegisterController {
   BuildContext? context;
   GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
 
@@ -75,7 +75,8 @@ class RegisterController {
 
         await _clientPovider.create(client);
         _progressDialog.hide();
-        print('El usuario se reistró');
+        Navigator.pushNamedAndRemoveUntil(context!, 'client/map', (route)=>false);
+        print('El cliente se registró');
       } else {
         _progressDialog.hide();
         print('El usuario NO se registró');
