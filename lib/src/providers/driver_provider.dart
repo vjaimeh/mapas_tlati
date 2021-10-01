@@ -1,6 +1,3 @@
-import 'dart:ffi';
-import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mapas_tlati/src/models/driver.dart';
 
@@ -21,5 +18,14 @@ class DriverPovider {
     if (errorMessage != null) {
       return Future.error(errorMessage);
     }
+  }
+
+  Future<Driver?> getById(String id) async {
+    DocumentSnapshot document = await _ref.doc(id).get();
+    if(document.exists){
+      Driver driver = Driver.fromJson(document.data() as Map<String, dynamic>);
+      return driver;
+    }
+    return null;
   }
 }

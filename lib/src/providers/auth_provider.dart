@@ -73,4 +73,9 @@ class AuthProvider {
     }
     return true;
   }
+
+  Future<void> signOut() async {
+     Future.wait([_firebaseAuth!.signOut()]);
+  }
+
 }

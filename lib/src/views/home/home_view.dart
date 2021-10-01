@@ -1,16 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:mapas_tlati/src/controllers/home_controller.dart';
 
-class HomeView extends StatelessWidget {
-   HomeView({Key? key}) : super(key: key);
+class HomeView extends StatefulWidget {
+   const HomeView({Key? key}) : super(key: key);
 
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
    final HomeController _con = HomeController();
+
+   @override
+   void initState() {
+     // TODO: implement initState
+     super.initState();
+     SchedulerBinding.instance?.addPostFrameCallback((timeStamp) {
+       _con.init(context);
+     });
+   }
 
   @override
   Widget build(BuildContext context) {
-    _con.init(context); //Inicializando el controlador
     return Scaffold(
       body:  SafeArea(
         child: Container(
@@ -77,5 +91,4 @@ class HomeView extends StatelessWidget {
   Widget _textTypeUser(String typeUser){
     return Text(typeUser, style: const TextStyle(color: Colors.white, fontSize: 16));
   }
-
 }

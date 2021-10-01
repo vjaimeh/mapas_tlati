@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mapas_tlati/src/models/cliente.dart';
+import 'package:mapas_tlati/src/models/client.dart';
 import 'package:mapas_tlati/src/providers/auth_provider.dart';
 import 'package:mapas_tlati/src/providers/client_provider.dart';
 import 'package:mapas_tlati/src/utils/my_progress_dialog.dart';
